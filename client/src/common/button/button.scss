@@ -1,0 +1,27 @@
+@use "../../scss/" as *;
+
+button {
+  cursor: pointer;
+  font-family: $font-family;
+}
+
+.btn {
+  @include flex(center, center);
+  border: 4px solid $main-color;
+  background: none;
+  color: $main-color;
+  border-radius: 50%;
+  padding: 0.5rem 0.5rem;
+  @include mobile {
+    border: 2px solid $main-color;
+  }
+}
+
+.btn:hover {
+  border: 4px solid $txt-color-light;
+  box-shadow: 0 0 10px 3px $txt-color-light;
+  transition: box-shadow 0.3s ease;
+}
+.btn:active {
+  box-shadow: none;
+}
