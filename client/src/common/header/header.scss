@@ -1,0 +1,28 @@
+@use '../../scss/' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: rgba($color: $dark-color, $alpha: 0.4);
+
+  &__wrap {
+    height: $header-height;
+    @include flex(center, space-around);
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    color: $main-color;
+
+    @include mobile {
+      height: 10rem;
+    }
+  }
+  &__btn {
+    @include flex(center, _);
+  }
+  &__btn > h3 {
+    margin-right: 1rem;
+  }
+}
