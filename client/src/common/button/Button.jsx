@@ -9,6 +9,7 @@ const Button = ({ type, onClick }) => {
         className={classNames({
           "bx bx-plus-medical": type === "add",
           "bx bx-trash bx-xs": type === "del",
+          "bx bxs-chevron-left bx-xs": type === "goBack",
         })}
       ></i>
     </button>
