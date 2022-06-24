@@ -1,0 +1,26 @@
+@use "../../scss/" as *;
+
+.list-item {
+  width: 600px;
+  @include tablet {
+    width: 500px;
+  }
+  @include mobile {
+    width: 350px;
+  }
+  border-radius: $border-radius;
+  margin: 1rem 0;
+  padding: 5px 5px;
+  @include flex(center, space-between);
+  background: $item-bg;
+  color: $txt-color-light;
+
+  &__title {
+    margin-left: 1rem;
+  }
+}
+
+.list-item:hover {
+  box-shadow: 0 0 5px 3px $main-color;
+  transition: box-shadow 0.3s ease;
+}
