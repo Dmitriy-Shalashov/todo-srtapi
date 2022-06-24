@@ -6,11 +6,11 @@
   left: 0;
   width: 100%;
   z-index: 99;
-  background-color: rgba($color: $dark-color, $alpha: 0.4);
+  background-color: rgba($color: $dark-color, $alpha: 0.7);
 
   &__wrap {
     height: $header-height;
-    @include flex(center, space-around);
+    @include flex(center, space-between);
     flex-wrap: wrap;
     column-gap: 2rem;
     color: $main-color;
