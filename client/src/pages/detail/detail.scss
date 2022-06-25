@@ -1,0 +1,14 @@
+@use "../../scss/" as *;
+
+.detail {
+  @include mobile {
+    margin-top: 10rem;
+  }
+  &__btn {
+    position: fixed;
+  }
+  &__wrapper {
+    @include flex(center, center);
+    flex-direction: column;
+  }
+}
