@@ -13,7 +13,6 @@
     @include flex(center, space-between);
     flex-wrap: wrap;
     column-gap: 2rem;
-    color: $main-color;
 
     @include mobile {
       height: 10rem;

@@ -12,13 +12,13 @@ axiosClient.interceptors.request.use(async (config) => config);
 
 axiosClient.interceptors.response.use(
   (response) => {
-    if (response && response.data.data.data) {
-      return response.data.data.data;
+    if (response && response.data.data) {
+      return response.data.data;
     }
     return response;
   },
   (error) => {
-    throw error;
+    return error;
   }
 );
 
