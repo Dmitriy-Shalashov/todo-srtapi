@@ -1,0 +1,10 @@
+@use "../../scss/" as *;
+
+.list-wrapper {
+  @include flex(center, center);
+  flex-direction: column;
+
+  @include mobile {
+    margin-top: 10rem;
+  }
+}
