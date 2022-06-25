@@ -1,0 +1,52 @@
+@use "../../scss/" as *;
+
+// .modal {
+//   @include flex(center, center);
+//   position: fixed;
+//   z-index: 100;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-color: rgba($color: #000000, $alpha: 0.7);
+//   overflow: auto;
+//   opacity: 0;
+//   visibility: hidden;
+
+//   &.active {
+//     opacity: 1;
+//     visibility: visible;
+//   }
+// }
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include flex(center, center);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  overflow-y: auto;
+
+  &__content {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: $txt-color-light;
+    width: 50vw;
+    transform: scale(0.5);
+    transition: 0.3s all;
+  }
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__content.active {
+  transform: scale(1);
+}

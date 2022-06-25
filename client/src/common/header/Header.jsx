@@ -15,10 +15,7 @@ const Header = () => {
   const [modalActive, setModalActive] = useState(false);
 
   const { pathname } = useLocation();
-  console.log(pathname);
   const navigate = useNavigate();
-  console.log(navigate);
-
   const listTitle = useSelector((state) => state.todoLists.todoListTitle);
 
   useEffect(() => {
