@@ -2,9 +2,13 @@ import React from "react";
 import classNames from "classnames";
 import "./button.scss";
 
-const Button = ({ type, onClick }) => {
+const Button = ({ type, onClick, disabled }) => {
   return (
-    <button className="btn" onClick={onClick}>
+    <button
+      className="btn"
+      onClick={onClick}
+      disabled={disabled ? "disabled" : null}
+    >
       <i
         className={classNames({
           "bx bx-plus-medical": type === "add",
