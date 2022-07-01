@@ -7,13 +7,12 @@ export const getAllPostsForList = createAsyncThunk(
     try {
       const response = await api.getOneTodoList(id);
       if (response.status === 404) {
-        console.log("test");
         throw new Error("Server Error!");
       } else {
-        console.log(response);
         return {
-          title: response.attributes.title,
-          posts: response.attributes.todo_items.data,
+          title: response.response.attributes.title,
+          posts: response.response.attributes.todo_items.data,
+          listId: response.response.id,
         };
       }
     } catch (error) {
@@ -21,6 +20,24 @@ export const getAllPostsForList = createAsyncThunk(
     }
   }
 );
+
+export const addNewPost = createAsyncThunk(
+  "todoPosts/addNewPost",
+  async function (postData, { rejectWithValue, dispatch }) {
+    const { text, id } = postData;
+    try {
+      const post = {
+        title: text,
+        todo_list: id,
+      };
+      const response = await api.createToDoItem(post);
+      dispatch(addPost(response.response));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const deletePost = createAsyncThunk(
   "todoPosts/deletePost",
   async function (id, { rejectWithValue, dispatch }) {
@@ -40,15 +57,16 @@ const todoPostsSlice = createSlice({
     todoPosts: {
       title: "",
       posts: [],
+      listId: null,
     },
   },
 
   reducers: {
-    cleareState(state, action) {
-      state.todoPosts = { title: "", posts: [] };
+    addPost(state, action) {
+      state.todoPosts.posts.push(action.payload);
     },
     removePost(state, action) {
-      state.todoPosts = state.todoPosts.filter(
+      state.todoPosts.posts = state.todoPosts.posts.filter(
         (post) => post.id !== action.payload.id
       );
     },
@@ -69,5 +87,5 @@ const todoPostsSlice = createSlice({
   },
 });
 
-export const { cleareState, removePost } = todoPostsSlice.actions;
+export const { removePost, addPost } = todoPostsSlice.actions;
 export default todoPostsSlice.reducer;

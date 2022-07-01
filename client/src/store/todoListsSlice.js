@@ -7,10 +7,9 @@ export const getTodoLists = createAsyncThunk(
     try {
       const response = await api.getAllTodoLists();
       if (response.status === 404) {
-        console.log("test");
         throw new Error("Server Error!");
       } else {
-        return response;
+        return response.response;
       }
     } catch (error) {
       console.log(error);
@@ -50,12 +49,16 @@ const todoListsSlice = createSlice({
   name: "todoLists",
   initialState: {
     todoLists: [],
+    lastAddListId: null,
     todoListTitle: null,
+    statusCode: null,
   },
 
   reducers: {
     addList(state, action) {
-      state.todoLists.push(action.payload);
+      state.todoLists.push(action.payload.response);
+      state.statusCode = action.payload.status;
+      state.lastAddListId = action.payload.response.id;
     },
     removeList(state, action) {
       state.todoLists = state.todoLists.filter(
