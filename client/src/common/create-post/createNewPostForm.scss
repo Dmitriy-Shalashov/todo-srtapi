@@ -1,0 +1,9 @@
+@use '../../scss/' as *;
+
+.input-block {
+  @include flex(center, center);
+  margin: 1rem 0;
+  &__btn {
+    margin-left: 1rem;
+  }
+}
