@@ -4,9 +4,22 @@
   @include mobile {
     margin-top: 10rem;
   }
-  &__btn {
-    position: fixed;
+  &__header {
+    position: sticky;
+    top: 5rem;
   }
+  .header__form {
+    display: flex;
+    justify-content: center;
+  }
+  .form__wrap {
+    width: 35%;
+  }
+  .header__btn {
+    position: absolute;
+    top: 1rem;
+  }
+
   &__wrapper {
     @include flex(center, center);
     flex-direction: column;
