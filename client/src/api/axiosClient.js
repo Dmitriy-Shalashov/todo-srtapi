@@ -13,7 +13,7 @@ axiosClient.interceptors.request.use(async (config) => config);
 axiosClient.interceptors.response.use(
   (response) => {
     if (response && response.data.data) {
-      return response.data.data;
+      return { response: response.data.data, status: response.status };
     }
     return response;
   },

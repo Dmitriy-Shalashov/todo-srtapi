@@ -54,6 +54,7 @@ const Detail = () => {
                 key={post.id}
                 title={post.attributes.title}
                 id={post.id}
+                completed={post.attributes.completed}
               />
             ))}
           </div>

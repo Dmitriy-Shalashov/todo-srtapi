@@ -13,7 +13,7 @@ const CreateNewListForm = () => {
   const dispath = useDispatch();
 
   useEffect(() => {
-    text ? setDisabled(false) : setDisabled(true);
+    text.trim().length ? setDisabled(false) : setDisabled(true);
   }, [text]);
 
   return (

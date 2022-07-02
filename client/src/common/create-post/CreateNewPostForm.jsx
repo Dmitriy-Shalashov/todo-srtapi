@@ -11,7 +11,7 @@ const CreateNewPostForm = ({ listId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    text ? setDisabled(false) : setDisabled(true);
+    text.trim().length ? setDisabled(false) : setDisabled(true);
   }, [text]);
 
   const handlyClick = () => {
