@@ -14,14 +14,40 @@
   }
   .form__wrap {
     width: 35%;
+    @include tablet {
+      width: 55%;
+    }
+    @include mobile {
+      width: 75%;
+    }
   }
   .header__btn {
     position: absolute;
     top: 1rem;
+    @include mobile {
+      top: 2rem;
+    }
   }
 
   &__wrapper {
     @include flex(center, center);
     flex-direction: column;
   }
+}
+
+.animate-enter {
+  opacity: 0;
+  transform: translateX(-550px);
+}
+.animate-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 500ms ease-in;
+}
+.animate-exit {
+  opacity: 1;
+}
+.animate-exit-active {
+  transform: translateX(550px);
+  transition: all 500ms ease-in;
 }
