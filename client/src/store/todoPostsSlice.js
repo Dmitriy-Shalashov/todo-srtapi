@@ -51,6 +51,23 @@ export const deletePost = createAsyncThunk(
   }
 );
 
+export const toggleStatus = createAsyncThunk(
+  "todoPosts/toggleStatus",
+  async function (id, { rejectWithValue, dispatch, getState }) {
+    const post = getState().todoPosts.todoPosts.posts.find(
+      (post) => post.id === id
+    );
+    console.log(post);
+    try {
+      const params = { completed: !post.attributes.completed };
+      const response = await api.updateTodoItem(id, params);
+      dispatch(togglePostComplete({ id }));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const todoPostsSlice = createSlice({
   name: "todoPosts",
   initialState: {
@@ -70,7 +87,14 @@ const todoPostsSlice = createSlice({
         (post) => post.id !== action.payload.id
       );
     },
+    togglePostComplete(state, action) {
+      const togglePost = state.todoPosts.posts.find(
+        (post) => post.id === action.payload.id
+      );
+      togglePost.attributes.completed = !togglePost.attributes.completed;
+    },
   },
+
   extraReducers: {
     [getAllPostsForList.pending]: (state, action) => {
       state.status = "loading";
@@ -87,5 +111,6 @@ const todoPostsSlice = createSlice({
   },
 });
 
-export const { removePost, addPost } = todoPostsSlice.actions;
+export const { removePost, addPost, togglePostComplete } =
+  todoPostsSlice.actions;
 export default todoPostsSlice.reducer;

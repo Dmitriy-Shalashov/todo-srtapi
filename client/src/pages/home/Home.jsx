@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -9,9 +9,7 @@ import "./home.scss";
 
 const Home = () => {
   const todoLists = useSelector((state) => state.todoLists.todoLists);
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+
   return (
     <>
       <div className="container">
@@ -22,7 +20,6 @@ const Home = () => {
             </Link>
           ))}
         </ul>
-        <h1>Home</h1>
       </div>
     </>
   );

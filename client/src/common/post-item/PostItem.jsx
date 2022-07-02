@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deletePost } from "../../store/todoPostsSlice";
+import { deletePost, toggleStatus } from "../../store/todoPostsSlice";
+import Checkbox from "../checkbox/Checkbox";
 import Button from "../button/Button";
 import "./postItem.scss";
 
-const PostItem = ({ title, id }) => {
+const PostItem = ({ title, id, completed }) => {
   const dispatch = useDispatch();
 
   const handlyDeletePost = (e) => {
@@ -16,7 +17,11 @@ const PostItem = ({ title, id }) => {
     <div className="post-item">
       <h3 className="post-item__title">{title}</h3>
       <div className="post-item__control">
-        <input type="checkbox" onChange={() => console.log("change")} />
+        <Checkbox
+          type="checkbox"
+          completed={completed}
+          onChange={() => dispatch(toggleStatus(id))}
+        />
         <Button type="del" onClick={handlyDeletePost} />
       </div>
     </div>
