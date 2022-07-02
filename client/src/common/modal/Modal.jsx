@@ -3,16 +3,12 @@ import classNames from "classnames";
 import "./modal.scss";
 
 const Modal = ({ active, setActive, children }) => {
-  const loger = () => {
-    console.log("modal closed");
-    setActive(false);
-  };
   return (
     <div
       className={classNames("modal", {
         active: active,
       })}
-      onClick={loger}
+      onClick={() => setActive(false)}
     >
       <div
         className={classNames("modal__content", {
@@ -20,7 +16,7 @@ const Modal = ({ active, setActive, children }) => {
         })}
         onClick={(e) => e.stopPropagation()}
       >
-        {children}
+        {active && <>{children}</>}
       </div>
     </div>
   );

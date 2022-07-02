@@ -37,4 +37,4 @@ const CreateNewPostForm = ({ listId }) => {
   );
 };
 
-export default React.memo(CreateNewPostForm);
+export default CreateNewPostForm;

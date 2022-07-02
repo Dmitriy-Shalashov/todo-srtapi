@@ -16,6 +16,12 @@ const CreateNewListForm = () => {
     text.trim().length ? setDisabled(false) : setDisabled(true);
   }, [text]);
 
+  useEffect(() => {
+    return () => {
+      setText("");
+    };
+  }, []);
+
   return (
     <div className="input-block">
       <div className="input-block__input"></div>
