@@ -14,6 +14,9 @@ const CreateNewPostForm = ({ listId }) => {
 
   useEffect(() => {
     text.trim().length ? setDisabled(false) : setDisabled(true);
+    if (!text.trim().length) {
+      setCompleted(false);
+    }
   }, [text]);
 
   const handlyClick = () => {
@@ -34,7 +37,11 @@ const CreateNewPostForm = ({ listId }) => {
         }}
       />
       <div className="input-block__btn">
-        <Checkbox completed={completed} onChange={() => setCompleted(true)} />
+        <Checkbox
+          completed={completed}
+          onChange={() => setCompleted(!completed)}
+          disabled={disabled}
+        />
         <Button type="add" onClick={handlyClick} disabled={disabled} />
       </div>
     </div>
