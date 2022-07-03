@@ -61,6 +61,7 @@ export const toggleStatus = createAsyncThunk(
     try {
       const params = { completed: !post.attributes.completed };
       const response = await api.updateTodoItem(id, params);
+      console.log(response);
       dispatch(togglePostComplete({ id }));
     } catch (error) {
       return rejectWithValue(error.message);

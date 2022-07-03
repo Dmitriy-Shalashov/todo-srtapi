@@ -23,7 +23,6 @@ const Detail = () => {
   useEffect(() => {
     dispatch(saveListTitle(id));
     dispatch(getAllPostsForList(id));
-
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [dispatch, id]);
 
