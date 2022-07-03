@@ -5,7 +5,7 @@ const Checkbox = ({ type, onChange, completed }) => {
   return (
     <input
       className="checkbox"
-      type={type}
+      type="checkbox"
       checked={completed}
       onChange={onChange}
     />
