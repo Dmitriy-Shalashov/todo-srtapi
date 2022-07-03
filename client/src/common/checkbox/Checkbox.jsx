@@ -1,13 +1,14 @@
 import React from "react";
 import "./checkbox.scss";
 
-const Checkbox = ({ type, onChange, completed }) => {
+const Checkbox = ({ onChange, completed, disabled }) => {
   return (
     <input
       className="checkbox"
       type="checkbox"
       checked={completed}
       onChange={onChange}
+      disabled={disabled ? "disabled" : null}
     />
   );
 };

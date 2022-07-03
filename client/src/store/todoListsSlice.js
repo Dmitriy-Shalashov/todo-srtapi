@@ -70,6 +70,9 @@ const todoListsSlice = createSlice({
         (list) => list.id === +action.payload
       );
     },
+    clearStatusCode(state, action) {
+      state.statusCode = null;
+    },
   },
 
   extraReducers: {
@@ -88,5 +91,6 @@ const todoListsSlice = createSlice({
   },
 });
 
-export const { addList, removeList, saveListTitle } = todoListsSlice.actions;
+export const { addList, removeList, saveListTitle, clearStatusCode } =
+  todoListsSlice.actions;
 export default todoListsSlice.reducer;

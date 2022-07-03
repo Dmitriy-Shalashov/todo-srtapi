@@ -5,6 +5,12 @@
   margin: 1rem 0;
   &__btn {
     width: 7rem;
+    @include tablet {
+      width: 8rem;
+    }
+    @include mobile {
+      width: 10rem;
+    }
     display: flex;
     align-items: center;
     justify-content: space-around;
