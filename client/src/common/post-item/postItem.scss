@@ -1,6 +1,7 @@
 @use "../../scss/" as *;
 
 .post-item {
+  position: relative;
   width: 600px;
   @include tablet {
     width: 500px;
@@ -32,4 +33,27 @@
 .post-item:hover {
   box-shadow: 0 0 5px 3px $main-color;
   transition: box-shadow 0.3s ease;
+}
+
+.completed::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  height: 2px;
+  background: $main-color;
+  width: 80%;
+  animation-name: line;
+  animation-duration: 1s;
+}
+
+@keyframes line {
+  0% {
+    width: 0%;
+  }
+  70% {
+    width: 82%;
+  }
+  100% {
+    width: 80%;
+  }
 }
