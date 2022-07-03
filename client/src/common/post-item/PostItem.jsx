@@ -6,6 +6,7 @@ import classNames from "classnames";
 import Checkbox from "../checkbox/Checkbox";
 import Button from "../button/Button";
 
+import PropTypes from "prop-types";
 import "./postItem.scss";
 
 const PostItem = ({ title, id, completed }) => {
@@ -32,6 +33,12 @@ const PostItem = ({ title, id, completed }) => {
       </div>
     </div>
   );
+};
+
+PostItem.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.number,
+  completed: PropTypes.bool,
 };
 
 export default PostItem;

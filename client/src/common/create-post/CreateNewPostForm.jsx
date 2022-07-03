@@ -4,6 +4,8 @@ import { addNewPost } from "../../store/todoPostsSlice";
 import Input from "../input/Input";
 import Checkbox from "../checkbox/Checkbox";
 import Button from "../button/Button";
+
+import PropTypes from "prop-types";
 import "./createNewPostForm.scss";
 
 const CreateNewPostForm = ({ listId }) => {
@@ -46,6 +48,10 @@ const CreateNewPostForm = ({ listId }) => {
       </div>
     </div>
   );
+};
+
+CreateNewPostForm.propTypes = {
+  listId: PropTypes.string,
 };
 
 export default CreateNewPostForm;

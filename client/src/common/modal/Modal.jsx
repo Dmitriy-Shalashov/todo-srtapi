@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import "./modal.scss";
 
 const Modal = ({ active, setActive, children }) => {
@@ -20,6 +21,12 @@ const Modal = ({ active, setActive, children }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  active: PropTypes.bool,
+  setActive: PropTypes.func,
+  children: PropTypes.node,
 };
 
 export default Modal;
