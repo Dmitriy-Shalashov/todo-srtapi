@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteList } from "../../store/todoListsSlice";
 import Button from "../button/Button";
+
+import PropTypes from "prop-types";
 import "./listItem.scss";
 
 const ListItem = ({ title, id }) => {
@@ -18,6 +20,11 @@ const ListItem = ({ title, id }) => {
       <Button type="del" onClick={handlyDeleteList} />
     </div>
   );
+};
+
+ListItem.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.number,
 };
 
 export default ListItem;

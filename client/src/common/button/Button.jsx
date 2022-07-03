@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import "./button.scss";
 
 const Button = ({ type, onClick, disabled }) => {
@@ -18,6 +19,12 @@ const Button = ({ type, onClick, disabled }) => {
       ></i>
     </button>
   );
+};
+
+Button.propTypes = {
+  type: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default Button;
