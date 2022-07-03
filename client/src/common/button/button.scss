@@ -8,7 +8,7 @@ button {
 .btn {
   @include flex(center, center);
   border: 4px solid $main-color;
-  background: none;
+  background: $item-bg;
   color: $main-color;
   border-radius: 50%;
   padding: 0.5rem 0.5rem;

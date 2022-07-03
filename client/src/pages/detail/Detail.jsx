@@ -17,7 +17,7 @@ const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { posts, title } = useSelector((state) => state.todoPosts.todoPosts);
-  console.log(posts);
+
   const { status } = useSelector((state) => state.todoPosts);
 
   useEffect(() => {

@@ -24,10 +24,11 @@ export const getAllPostsForList = createAsyncThunk(
 export const addNewPost = createAsyncThunk(
   "todoPosts/addNewPost",
   async function (postData, { rejectWithValue, dispatch }) {
-    const { text, id } = postData;
+    const { text, id, completed } = postData;
     try {
       const post = {
         title: text,
+        completed: completed,
         todo_list: id,
       };
       const response = await api.createToDoItem(post);

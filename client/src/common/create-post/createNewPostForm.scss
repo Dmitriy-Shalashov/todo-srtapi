@@ -4,6 +4,10 @@
   @include flex(center, center);
   margin: 1rem 0;
   &__btn {
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     margin-left: 1rem;
   }
 }

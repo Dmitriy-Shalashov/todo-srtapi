@@ -25,7 +25,6 @@ const PostItem = ({ title, id, completed }) => {
       <h3 className="post-item__title">{title}</h3>
       <div className="post-item__control">
         <Checkbox
-          type="checkbox"
           completed={completed}
           onChange={() => dispatch(toggleStatus(id))}
         />
