@@ -6,15 +6,11 @@ export const getAllPostsForList = createAsyncThunk(
   async function (id, { rejectWithValue }) {
     try {
       const response = await api.getOneTodoList(id);
-      if (response.status === 404) {
-        throw new Error("Server Error!");
-      } else {
-        return {
-          title: response.response.attributes.title,
-          posts: response.response.attributes.todo_items.data,
-          listId: response.response.id,
-        };
-      }
+      return {
+        title: response.response.attributes.title,
+        posts: response.response.attributes.todo_items.data,
+        listId: response.response.id,
+      };
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -77,6 +73,7 @@ const todoPostsSlice = createSlice({
       title: "",
       posts: [],
       listId: null,
+      error: null,
     },
   },
 
