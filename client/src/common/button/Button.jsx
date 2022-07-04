@@ -15,6 +15,7 @@ const Button = ({ type, onClick, disabled }) => {
           "bx bx-plus-medical": type === "add",
           "bx bx-trash bx-xs": type === "del",
           "bx bxs-chevron-left bx-xs": type === "goBack",
+          "bx bx-chevron-up bx-xs": type === "scrollUp",
         })}
       ></i>
     </button>

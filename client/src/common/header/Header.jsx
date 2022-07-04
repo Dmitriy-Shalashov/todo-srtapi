@@ -33,7 +33,7 @@ const Header = () => {
     }
   }, [pathname, listTitle]);
 
-  const handlyClick = () => {
+  const handleClick = () => {
     if (pathname === "/") {
       setModalActive(!modalActive);
     } else {
@@ -51,7 +51,7 @@ const Header = () => {
 
         <div className="header__btn">
           <h3>{params}</h3>
-          <Button type={type} onClick={handlyClick}></Button>
+          <Button type={type} onClick={handleClick}></Button>
         </div>
       </div>
       <Modal

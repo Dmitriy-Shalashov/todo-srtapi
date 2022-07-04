@@ -7,6 +7,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import Button from "../../common/button/Button";
 import PostItem from "../../common/post-item/PostItem";
+import ScrollToUp from "../../common/scroll-to-up/ScrollToUp";
 import Loader from "../../common/loader/Loader";
 import CreateNewPostForm from "../../common/create-post/CreateNewPostForm";
 
@@ -60,6 +61,7 @@ const Detail = () => {
             ))}
           </TransitionGroup>
         </div>
+        <ScrollToUp />
       </div>
     </>
   );

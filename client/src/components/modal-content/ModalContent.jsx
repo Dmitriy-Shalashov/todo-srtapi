@@ -12,7 +12,7 @@ const ModalContent = () => {
     return () => {
       dispatch(clearStatusCode());
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

@@ -1,0 +1,12 @@
+@use "../../scss/" as *;
+
+.scroll-btn {
+  position: sticky;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 1rem;
+
+  @include mobile {
+    display: none;
+  }
+}
