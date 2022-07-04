@@ -6,13 +6,8 @@ export const getTodoLists = createAsyncThunk(
   async function (_, { rejectWithValue }) {
     try {
       const response = await api.getAllTodoLists();
-      if (response.status === 404) {
-        throw new Error("Server Error!");
-      } else {
-        return response.response;
-      }
+      return response.response;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }
@@ -52,6 +47,7 @@ const todoListsSlice = createSlice({
     lastAddListId: null,
     todoListTitle: null,
     statusCode: null,
+    error: null,
   },
 
   reducers: {
