@@ -8,7 +8,7 @@ const ScrollToUp = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    pageYOffset > 100 ? setVisible(true) : setVisible(false);
+    pageYOffset > 50 ? setVisible(true) : setVisible(false);
   }, [pageYOffset]);
 
   const scroll = () => {
