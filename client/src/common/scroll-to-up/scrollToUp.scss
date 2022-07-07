@@ -1,11 +1,13 @@
 @use "../../scss/" as *;
 
 .scroll-btn {
-  position: sticky;
-  display: flex;
-  justify-content: flex-end;
-  bottom: 1rem;
+  position: fixed;
+  bottom: 2rem;
+  right: calc(50vw + 10% - $container / 2);
 
+  @include tablet {
+    right: calc(50vw + 20% - $tablet-width / 2);
+  }
   @include mobile {
     display: none;
   }
