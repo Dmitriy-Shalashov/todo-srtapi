@@ -3,17 +3,18 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import ListItem from "../../common/list-item/ListItem";
+import { selectAllLists } from "../../store/selectors";
 
 import getLink from "./helpers/getLink";
-import "./home.scss";
+import styles from "./Home.module.scss";
 
 const Home = () => {
-  const todoLists = useSelector((state) => state.todoLists.todoLists);
+  const todoLists = useSelector(selectAllLists);
 
   return (
     <>
-      <div className="container">
-        <ul className="list-wrapper mt-6">
+      <div className={styles.container}>
+        <ul className={`mt-6 ${styles.list__wrapper}`}>
           {todoLists.map((list) => (
             <Link key={list.id} to={getLink(list.id)}>
               <ListItem title={list.attributes.title} id={list.id} />

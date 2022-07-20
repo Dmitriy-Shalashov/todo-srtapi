@@ -1,0 +1,22 @@
+--cтили через - модули - done)))
+--type === "del" - заменить на другое имя, type - резервно = option - done))
+---вынести селекторы с кода -  done)))
+
+
+createNewPost - пересмотреть useEffect вынести логику в useMemo
+
+
+
+
+initialState: {
+    todoLists: [], 
+    lastAddListId: null, - лишнее , можно взять с масива todoLists
+    todoListTitle: null, - лишнее , можно взять с масива todoLists
+    statusCode: null,
+    status: null,
+    error: null,
+  },
+
+ entetyadapter
+
+ большой код - логику вынести в отдельные файлы, принцип - вью и логика в разных местах

@@ -53,20 +53,3 @@
     flex-direction: column;
   }
 }
-
-.animate-enter {
-  opacity: 0;
-  transform: translateX(-550px);
-}
-.animate-enter-active {
-  opacity: 1;
-  transform: translateX(0px);
-  transition: all 500ms ease-in;
-}
-.animate-exit {
-  opacity: 1;
-}
-.animate-exit-active {
-  transform: translateX(550px);
-  transition: all 500ms ease-in;
-}

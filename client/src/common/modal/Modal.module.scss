@@ -9,8 +9,7 @@
   top: 0;
   left: 0;
   @include flex(center, center);
-  opacity: 0;
-  pointer-events: none;
+  pointer-events: auto;
   transition: 0.3s;
   overflow-y: auto;
 
@@ -18,20 +17,12 @@
     padding: 2rem;
     border-radius: $border-radius;
     background-color: $item-bg;
-    width: 50%;
+    width: 35%;
     @include tablet {
-      width: 70%;
+      width: 60%;
     }
-    transform: scale(0.5);
-    transition: 0.3s all;
+    @include mobile {
+      width: 80%;
+    }
   }
-}
-
-.modal.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.modal__content.active {
-  transform: scale(1);
 }

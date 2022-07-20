@@ -1,15 +1,15 @@
 import React from "react";
-import "./loader.scss";
+import styles from "./Loader.module.scss";
 
 const Loader = () => {
   return (
-    <div className="loader container">
-      <div className="loader__wrapper">
-        <div className="loader__box">
-          <div className="circle"></div>
-          <div className="circle"></div>
+    <div className={`container ${styles.loader}`}>
+      <div className={styles["loader__wrapper"]}>
+        <div className={styles["loader__box"]}>
+          <div className={styles.circle}></div>
+          <div className={styles.circle}></div>
         </div>
-        <div className="loader__title">
+        <div className={styles["loader__title"]}>
           <h2>Loading...</h2>
         </div>
       </div>

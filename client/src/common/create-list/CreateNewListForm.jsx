@@ -4,7 +4,7 @@ import { createNewList } from "../../store/todoListsSlice";
 import Input from "../input/Input";
 import Button from "../button/Button";
 
-import "./createNewListForm.scss";
+import styles from "./CreateNewListForm.module.scss";
 
 const CreateNewListForm = () => {
   const [text, setText] = useState("");
@@ -23,8 +23,7 @@ const CreateNewListForm = () => {
   }, []);
 
   return (
-    <div className="input-block">
-      <div className="input-block__input"></div>
+    <div className={styles["input-block"]}>
       <Input
         type="text"
         placeholder="Enter new List name"
@@ -33,10 +32,9 @@ const CreateNewListForm = () => {
           setText(e.target.value);
         }}
       />
-
-      <div className="input-block__btn">
+      <div className={styles["input-block__btn"]}>
         <Button
-          type="add"
+          option="add"
           onClick={() => dispath(createNewList(text))}
           disabled={disabled}
         />

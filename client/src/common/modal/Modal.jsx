@@ -1,23 +1,24 @@
 import React from "react";
-import classNames from "classnames";
+import cn from "classnames";
 import PropTypes from "prop-types";
-import "./modal.scss";
+
+import styles from "./Modal.module.scss";
 
 const Modal = ({ active, setActive, children }) => {
   return (
     <div
-      className={classNames("modal", {
+      className={cn(styles.modal, {
         active: active,
       })}
       onClick={() => setActive(false)}
     >
       <div
-        className={classNames("modal__content", {
+        className={cn(styles["modal__content"], {
           active: active,
         })}
         onClick={(e) => e.stopPropagation()}
       >
-        {active && <>{children}</>}
+        {children}
       </div>
     </div>
   );

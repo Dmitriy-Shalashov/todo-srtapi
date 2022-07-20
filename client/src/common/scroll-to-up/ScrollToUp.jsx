@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useWindowScroll } from "react-use";
 import Button from "../button/Button";
-import "./scrollToUp.scss";
+
+import styles from "./ScrollToUp.module.scss";
 
 const ScrollToUp = () => {
   const { y: pageYOffset } = useWindowScroll();
@@ -11,19 +12,17 @@ const ScrollToUp = () => {
     pageYOffset > 50 ? setVisible(true) : setVisible(false);
   }, [pageYOffset]);
 
-  const scroll = () => {
+  const scroll = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  if (!visible) {
-    return false;
-  }
+  }, []);
 
   return (
     <>
-      <div className="scroll-btn">
-        <Button type="scrollUp" onClick={scroll} />
-      </div>
+      {visible && (
+        <div className={styles["scroll-btn"]}>
+          <Button option="scrollUp" onClick={scroll} />
+        </div>
+      )}
     </>
   );
 };

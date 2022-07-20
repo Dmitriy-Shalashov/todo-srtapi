@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearStatusCode } from "../../store/todoListsSlice";
+
+import { selectStatuslists } from "../../store/selectors";
+
 import CreateNewPostForm from "../../common/create-post/CreateNewPostForm";
 import CreateNewListForm from "../../common/create-list/CreateNewListForm";
 
 const ModalContent = () => {
-  const { statusCode, lastAddListId } = useSelector((state) => state.todoLists);
+  const { statusCode, lastAddListId } = useSelector(selectStatuslists);
   const dispatch = useDispatch();
 
   useEffect(() => {
