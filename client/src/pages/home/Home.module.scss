@@ -1,6 +1,6 @@
 @use "../../scss/" as *;
 
-.list-wrapper {
+.list__wrapper {
   @include flex(center, center);
   flex-direction: column;
 

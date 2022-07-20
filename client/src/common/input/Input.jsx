@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./input.scss";
+
+import styles from "./Input.module.scss";
 
 const Input = ({ type, placeholder, value, onChange }) => {
   return (
     <input
-      className="input"
+      className={styles.input}
       type={type}
       placeholder={placeholder}
       value={value}
@@ -21,4 +22,4 @@ Input.propTypes = {
   onChange: PropTypes.func,
 };
 
-export default Input;
+export default React.memo(Input);

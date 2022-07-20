@@ -7,12 +7,12 @@ export const getAllPostsForList = createAsyncThunk(
     try {
       const response = await api.getOneTodoList(id);
       return {
-        title: response.response.attributes.title,
+        listTitle: response.response.attributes.title,
         posts: response.response.attributes.todo_items.data,
         listId: response.response.id,
       };
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -54,7 +54,6 @@ export const toggleStatus = createAsyncThunk(
     const post = getState().todoPosts.todoPosts.posts.find(
       (post) => post.id === id
     );
-    console.log(post);
     try {
       const params = { completed: !post.attributes.completed };
       const response = await api.updateTodoItem(id, params);
@@ -66,15 +65,21 @@ export const toggleStatus = createAsyncThunk(
   }
 );
 
+const setError = (state, action) => {
+  state.status = "rejected";
+  state.error = action.payload;
+};
+
 const todoPostsSlice = createSlice({
   name: "todoPosts",
   initialState: {
     todoPosts: {
-      title: "",
+      listTitle: "",
       posts: [],
       listId: null,
-      error: null,
     },
+    status: null,
+    error: null,
   },
 
   reducers: {
@@ -103,10 +108,10 @@ const todoPostsSlice = createSlice({
       state.status = "resolved";
       state.todoPosts = action.payload;
     },
-    [getAllPostsForList.rejected]: (state, action) => {
-      state.status = "rejected";
-      state.error = action.payload;
-    },
+    [getAllPostsForList.rejected]: setError,
+    [addNewPost.rejected]: setError,
+    [deletePost.rejected]: setError,
+    [toggleStatus.rejected]: setError,
   },
 });
 

@@ -8,7 +8,7 @@ export const getTodoLists = createAsyncThunk(
       const response = await api.getAllTodoLists();
       return response.response;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -31,14 +31,18 @@ export const deleteList = createAsyncThunk(
   "todoLists/deleteList",
   async function (id, { rejectWithValue, dispatch }) {
     try {
-      const response = await api.deleteTodoList(id);
-      console.log(response);
+      await api.deleteTodoList(id);
       dispatch(removeList({ id }));
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
+
+const setError = (state, action) => {
+  state.status = "rejected";
+  state.error = action.payload;
+};
 
 const todoListsSlice = createSlice({
   name: "todoLists",
@@ -47,6 +51,7 @@ const todoListsSlice = createSlice({
     lastAddListId: null,
     todoListTitle: null,
     statusCode: null,
+    status: null,
     error: null,
   },
 
@@ -80,10 +85,9 @@ const todoListsSlice = createSlice({
       state.status = "resolved";
       state.todoLists = action.payload;
     },
-    [getTodoLists.rejected]: (state, action) => {
-      state.status = "rejected";
-      state.error = action.payload;
-    },
+    [getTodoLists.rejected]: setError,
+    [createNewList.rejected]: setError,
+    [deleteList.rejected]: setError,
   },
 });
 

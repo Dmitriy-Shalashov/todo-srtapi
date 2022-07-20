@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./checkbox.scss";
+
+import styles from "./Checkbox.module.scss";
 
 const Checkbox = ({ onChange, completed, disabled }) => {
   return (
     <input
-      className="checkbox"
+      className={styles.checkbox}
       type="checkbox"
       checked={completed}
       onChange={onChange}
@@ -20,4 +21,4 @@ Checkbox.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default Checkbox;
+export default React.memo(Checkbox);

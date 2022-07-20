@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { deleteList } from "../../store/todoListsSlice";
 import Button from "../button/Button";
 
 import PropTypes from "prop-types";
-import "./listItem.scss";
+
+import styles from "./ListItem.module.scss";
 
 const ListItem = ({ title, id }) => {
   const dispatch = useDispatch();
 
-  const handlyDeleteList = (e) => {
-    e.preventDefault();
-    return dispatch(deleteList(id));
-  };
+  const handleDeleteList = useCallback(
+    (e) => {
+      e.preventDefault();
+      return dispatch(deleteList(id));
+    },
+    [dispatch, id]
+  );
 
   return (
-    <div className="list-item">
-      <h3 className="list-item__title">{title}</h3>
-      <Button type="del" onClick={handlyDeleteList} />
+    <div className={styles["list-item"]}>
+      <h3 className={styles["list-item__title"]}>{title}</h3>
+      <Button option="del" onClick={handleDeleteList} />
     </div>
   );
 };
@@ -27,4 +31,4 @@ ListItem.propTypes = {
   id: PropTypes.number,
 };
 
-export default ListItem;
+export default React.memo(ListItem);

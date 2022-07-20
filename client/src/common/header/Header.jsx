@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { deleteList } from "../../store/todoListsSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { selectListTitle, selectAllPosts } from "../../store/selectors";
+
 import Button from "../button/Button";
 import Modal from "../modal/Modal";
 import ModalContent from "../../components/modal-content/ModalContent";
-import "./header.scss";
+
+import styles from "./Header.module.scss";
 
 const Header = () => {
   const [title, setTitle] = useState("");
@@ -17,11 +20,11 @@ const Header = () => {
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const listTitle = useSelector((state) => state.todoLists.todoListTitle);
-  const { listId } = useSelector((state) => state.todoPosts.todoPosts);
+  const listTitle = useSelector(selectListTitle);
+  const { listId } = useSelector(selectAllPosts);
   const dispath = useDispatch();
 
-  useEffect(() => {
+  const variantsHeaderParams = useCallback(() => {
     if (pathname === "/") {
       setParams("Add new Todo List");
       setTitle("My ToDo App");
@@ -33,32 +36,38 @@ const Header = () => {
     }
   }, [pathname, listTitle]);
 
-  const handleClick = () => {
+  useEffect(() => {
+    variantsHeaderParams();
+  }, [variantsHeaderParams]);
+
+  const handleClick = useCallback(() => {
     if (pathname === "/") {
       setModalActive(!modalActive);
     } else {
       dispath(deleteList(listId));
       navigate("/");
     }
-  };
+  }, [pathname, listId, modalActive, navigate, dispath]);
 
   return (
-    <div className="header">
-      <div className="header__wrap container">
-        <div className="header__title">
+    <div className={styles.header}>
+      <div className={`container ${styles.header__wrap}`}>
+        <div className={styles["header__title"]}>
           <h1>{title}</h1>
         </div>
 
-        <div className="header__btn">
+        <div className={styles["header__btn"]}>
           <h3>{params}</h3>
-          <Button type={type} onClick={handleClick}></Button>
+          <Button option={type} onClick={handleClick}></Button>
         </div>
       </div>
-      <Modal
-        active={modalActive}
-        setActive={setModalActive}
-        children={<ModalContent />}
-      />
+      {modalActive && (
+        <Modal
+          active={modalActive}
+          setActive={setModalActive}
+          children={<ModalContent />}
+        />
+      )}
     </div>
   );
 };
